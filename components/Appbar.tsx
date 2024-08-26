@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { FiSun, FiMoon, FiUser, FiSettings, FiLogOut } from "react-icons/fi";
@@ -6,7 +7,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 
 export default function Appbar() {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
-
+   const router = useRouter();
   const handleClick = () => {
     setIsDropDownVisible(!isDropDownVisible);
   };
@@ -19,9 +20,12 @@ export default function Appbar() {
 
       <div className="flex items-center space-x-4">
         <div className="flex items-center gap-3 space-x-2">
-          <h1 className="hidden lg:block text-text-light text-lg font-semibold dark:text-white sm:text-xl md:text-2xl">
-            Hi, Adarsh!
-          </h1>
+        <button
+         className="bg-green-600 p-2 rounded-md text-white"
+         onClick={()=>{
+          router.push('/signup')
+         }}
+         >Signup</button>
         </div>
 
         <div className="relative">
